@@ -13,7 +13,7 @@ const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 export default function Application() {
     const [ page, setPage ] = useState(1);
-    const { data, error } = useSWR(`${API_ENDPOINT}?limit=${LIMIT}&offset=${page * LIMIT}`, fetcher);
+    const { data, error } = useSWR(`${API_ENDPOINT}?limit=${LIMIT}&offset=${(page - 1) * LIMIT}`, fetcher);
     const [ totalPages, setTotalPages ] = useState(2);
 
     function Content(props) {
